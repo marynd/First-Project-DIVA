@@ -1,0 +1,5 @@
+
+python
+numpy
+cv2
+PIL
