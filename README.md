@@ -1,13 +1,18 @@
-# First-Project-DIVA
-Rescaling the images and making gif files
+## First-Project-DIVA
+#Task: Rescaling the images and making a gif out of them
+#Required dataset: dataset CSG18 
 
-How to run:
-python TASK_code.py
+#How to run:
+python main.py --path "pixel-level-gt/training/" --format "png" --scale 0.6 --gif_filename "res.gif" --interpolation "nearest"
 
+#input paramers:
+#   path: directory where the images are placed
+#   format: format of images such as png 
+#   scale: how much to reduce image size (a number between [0-1]) 1 means no scaling
+#   gif_filename: Filename to save the gif
+#   interpolation (optional): can be one of the linear, nearest, and cubic. Default is nearest.
 
-input and output: 
-The program reads all the images in the two folders ./pixel-level-gt/training/ and ./img/training/
-Then it resizes them and saves them in the same folder and with the same name+resized.png 
-Finally it makes a gif file for each folder.
-The gif files will be in out_gr.gif and out_org.gif 
+#output:
+#   saving resized images to the path directory with suffix _resized.format
+#   making a gif out of resized images and saving it to gif_filename
 
