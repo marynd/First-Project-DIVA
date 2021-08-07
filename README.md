@@ -1,5 +1,5 @@
 # First-Project-DIVA
-# Task: Rescaling the images and generating a GIF out of them
+## Task: Rescaling the images and generating a GIF out of them
 #Required dataset: dataset CSG18 
 
 ## How to run:
