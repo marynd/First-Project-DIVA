@@ -6,7 +6,7 @@
 python main.py --path "pixel-level-gt/training/" --format "png" --scale 0.6 --gif_filename "res.gif" --interpolation "nearest"
 
 # input paramers:
-   path: directory where the images are placed
+   path: directory where the images are placed \n
    format: format of images such as png 
    scale: how much to reduce image size (a number between [0-1]) 1 means no scaling
    gif_filename: Filename to save the gif
