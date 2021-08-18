@@ -3,20 +3,19 @@
 
 ## Installation
 Start by cloning this repositiory:
-
+```
 git clone https://github.com/marynd/First-Project-DIVA/
-
 cd First-Project-DIVA
-
+```
 Create a new conda environment (Python 3.8):
-
+```
 conda create -n FirstProjectDiva python=3.8
-
 conda activate FirstProjectDiva
-
+```
 And install the dependencies:
-
+```
 pip install -r requirements.txt
+```
 
 ## Dataset
 Data can be downloaded from [here](https://diuf.unifr.ch/main/hisdoc/diva-hisdb). We work with CSG18 dataset.
