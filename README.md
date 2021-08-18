@@ -33,6 +33,10 @@ where the parameters are:
   * interpolation (optional): can be one of the linear, nearest, and cubic. Default is nearest 
   * path_out: directory where the output images (resized images in gif) are saved
   
+## Inputs
+
+   * inputs are the images in path
+
 ## Outputs
 
    * saving resized images as gif to the directory path_out with suffix _resized.format 
