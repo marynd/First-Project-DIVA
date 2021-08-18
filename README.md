@@ -1,5 +1,4 @@
-# First-Project-DIVA
-## Task: Rescaling the images and generating a GIF for each of them
+# First-Project-DIVA: Rescaling the images and generating a GIF for each of them
 
 ## Installation
 Start by cloning this repositiory:
