@@ -16,7 +16,7 @@ python main.py --path "pixel-level-gt/training/" --format "png" --scale 0.6  --i
    
    interpolation (optional): can be one of the linear, nearest, and cubic. Default is nearest 
    
-   path: directory where the output images (resized images in gif) are saved
+   path_out: directory where the output images (resized images in gif) are saved
    
 ## output:
 
