@@ -19,9 +19,9 @@ def get_colors_from_images(path):
     return all_colors
 
 #rescale function
-def rescale(image_path, format, scale, interpolation='nearest'):
+def rescale(image_path, scale, interpolation='nearest'):
     
-    resized_image_path = image_path+"_resized.{}".format(format)
+    #resized_image_path = image_path+"_resized.{}".format(format)
     image = cv2.imread(image_path, cv2.IMREAD_UNCHANGED)
     width = int(image.shape[1] * scale)
     height = int(image.shape[0] * scale)
@@ -36,7 +36,7 @@ def rescale(image_path, format, scale, interpolation='nearest'):
         sys.exit()
     image_resized = cv2.resize(image, (width, height), interpolation_type)
     #print(f'saving resized image {image_path} to {resized_image_path}')
-    cv2.imwrite(resized_image_path, image_resized)
+    #cv2.imwrite(resized_image_path, image_resized)
     return image_resized
     
 
