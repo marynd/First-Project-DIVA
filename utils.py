@@ -5,10 +5,8 @@ import glob
 from PIL import Image
 import sys
     
-def get_colors_from_images(path):
+def get_colors_from_images(images):
     palette_lst = []
-    images = sorted(glob.glob(path)) 
-
     for image_path in images:
         image = Image.open(image_path).convert('P', palette=Image.ADAPTIVE, colors=256)
         im_palette = np.array(image.getpalette()).reshape(-1,3)

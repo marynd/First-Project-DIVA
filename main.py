@@ -8,14 +8,21 @@ import utils
 from tqdm import tqdm
 
 def init(path, format, scale, interpolation, path_out):
+
+
     images = sorted(glob.glob(args.path+"*{}".format(format)))
+    print(f"calculating the colormap ...")
+    colormap = utils.get_colors_from_images(images)
+    print(f"colormap calculated")
+    print(f"resizing the images ...")
     for img in tqdm(images):
         images_resized = []
         img_resized = utils.rescale(img, scale=scale, interpolation=interpolation)
         color_coverted = cv2.cvtColor(img_resized, cv2.COLOR_BGR2RGB)
         pil_image = Image.fromarray(color_coverted).convert('P', palette=Image.ADAPTIVE, colors=256)
         images_resized.append(pil_image)
-        images_resized[0].save(path_out+"/"+img.split("/")[-1]+"_resized.gif", save_all=True, format="GIF", duration=100, loop=0)
+        images_resized[0].save(path_out+"/"+img.split("/")[-1]+"_resized.gif", save_all=True, format="GIF", palette=colormap.tobytes(), duration=100, loop=0)
+    print(f"images resized")
 
 if __name__ == '__main__':
 
