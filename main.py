@@ -6,6 +6,7 @@ import glob
 import argparse
 import utils
 import tqdm
+import json
 import time
 
 def init(path, format, scale, interpolation, path_out, lcolormap):
