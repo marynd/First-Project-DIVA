@@ -5,10 +5,21 @@ import cv2 as cv2
 import glob
 import argparse
 import utils
-import tqdm
+import tqdm 
+import json
 import time
+from multiprocessing import Pool
+
+
+def callable(img, scale, interpolation, path_out, colormap):
+
+    img_resized = utils.rescale(img, scale=scale, interpolation=interpolation)
+    color_coverted = cv2.cvtColor(img_resized, cv2.COLOR_BGR2RGB)
+    pil_image = Image.fromarray(color_coverted).convert('P', palette=Image.ADAPTIVE, colors=256)
+    pil_image.save(path_out+"/"+img.split("/")[-1]+"_resized.gif", save_all=True, format="GIF", palette=colormap.tobytes(), duration=100, loop=0)
 
 def init(path, format, scale, interpolation, path_out, lcolormap):
+
 
     images = sorted(glob.glob(args.path+"*{}".format(format)))
 
@@ -23,11 +34,11 @@ def init(path, format, scale, interpolation, path_out, lcolormap):
 
     print(f"resizing the images ...")
     start = time.time()
-    for img in tqdm.tqdm(images):
-        img_resized = utils.rescale(img, scale=scale, interpolation=interpolation)
-        color_coverted = cv2.cvtColor(img_resized, cv2.COLOR_BGR2RGB)
-        pil_image = Image.fromarray(color_coverted).convert('P', palette=Image.ADAPTIVE, colors=256)
-        pil_image.save(path_out+"/"+img.split("/")[-1]+"_resized.gif", save_all=True, format="GIF", palette=colormap.tobytes(), duration=100, loop=0)
+    with Pool(4) as pool:
+        results = pool.starmap(callable, tqdm.tqdm(zip(images, [scale]*len(images), \
+                                                               [interpolation]*len(images), \
+                                                               [path_out]*len(images), \
+                                                               [colormap]*len(images)), total=len(images)))
     print(f"images resized in {time.time()-start} seconds")
 
 if __name__ == '__main__':
